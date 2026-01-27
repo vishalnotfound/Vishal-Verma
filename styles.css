@@ -334,11 +334,13 @@ a:hover {
 }
 
 /* ----------------------------------------
-   Projects Section
+   Projects Section with Wire Design
    ---------------------------------------- */
 .projects {
     padding: var(--space-xl) var(--space-md);
     border-top: 1px solid var(--color-border);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .projects-header {
@@ -353,8 +355,87 @@ a:hover {
     color: var(--color-text-muted);
 }
 
+/* Project Item with Wire */
 .project {
-    padding: var(--space-lg) 0;
+    display: flex;
+    align-items: stretch;
+    gap: var(--space-lg);
+    padding: var(--space-xl) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.project:last-child {
+    border-bottom: none;
+}
+
+/* Wire Design Elements */
+.project-wire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.wire-arm {
+    width: 30px;
+    height: 8px;
+    background: var(--color-text);
+}
+
+.wire-line {
+    width: 2px;
+    flex: 1;
+    background: var(--color-text);
+    min-height: 100px;
+}
+
+.wire-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--color-text);
+    border-radius: 50%;
+}
+
+/* Left-aligned project: wire on left, arm points right */
+.project-left .project-wire {
+    align-items: flex-end;
+}
+
+.project-left .wire-arm {
+    margin-right: -1px;
+}
+
+/* Right-aligned project: wire on right, arm points left */
+.project-right {
+    justify-content: flex-end;
+}
+
+.project-right .project-wire {
+    align-items: flex-start;
+}
+
+.project-right .wire-arm {
+    margin-left: -1px;
+}
+
+.project-right .project-info {
+    text-align: right;
+}
+
+.project-right .project-meta {
+    justify-content: flex-end;
+}
+
+.project-right .project-tags {
+    justify-content: flex-end;
+}
+
+/* Project Info Content */
+.project-info {
+    flex: 1;
+    max-width: 600px;
 }
 
 .project-meta {
@@ -362,6 +443,7 @@ a:hover {
     align-items: center;
     gap: var(--space-md);
     margin-bottom: var(--space-md);
+    flex-wrap: wrap;
 }
 
 .project-number {
@@ -373,10 +455,11 @@ a:hover {
 .project-tags {
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .project-tags span {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
     padding: 0.25rem 0.75rem;
     background: var(--color-bg-alt);
@@ -384,7 +467,7 @@ a:hover {
 }
 
 .project-title {
-    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-size: clamp(2rem, 6vw, 4rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     line-height: 1;
@@ -393,16 +476,10 @@ a:hover {
 }
 
 .project-desc {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--color-text-muted);
-    max-width: 600px;
     line-height: 1.7;
     margin-bottom: var(--space-md);
-}
-
-.project-links {
-    display: flex;
-    gap: var(--space-md);
 }
 
 .project-link {
@@ -410,13 +487,17 @@ a:hover {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    display: inline-block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--color-text);
+    transition: all var(--transition);
 }
 
-.project-divider {
-    height: 1px;
-    background: var(--color-border);
-    margin: var(--space-md) 0;
+.project-link:hover {
+    opacity: 1;
+    padding-left: 1rem;
 }
+
 
 /* ----------------------------------------
    Process Section
@@ -549,19 +630,73 @@ a:hover {
 /* ----------------------------------------
    Responsive
    ---------------------------------------- */
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+    :root {
+        --space-xl: 6rem;
+        --space-2xl: 8rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 10vw, 7rem);
+    }
+
+    .contact-title {
+        font-size: clamp(2.5rem, 8vw, 6rem);
+    }
+}
+
+/* Mobile landscape and below */
 @media (max-width: 768px) {
+    :root {
+        --space-md: 1.5rem;
+        --space-lg: 2.5rem;
+        --space-xl: 4rem;
+        --space-2xl: 6rem;
+    }
+
+    /* Hide corner nav on mobile */
     .corner-nav {
         display: none;
     }
 
+    /* Hero adjustments */
+    .hero {
+        padding: var(--space-lg) var(--space-md);
+        min-height: 100svh;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 12vw, 4rem);
+        margin-bottom: var(--space-md);
+    }
+
+    .hero-name {
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 1rem;
+    }
+
+    .scroll-indicator {
+        bottom: var(--space-md);
+    }
+
+    /* About section */
     .about {
         grid-template-columns: 1fr;
+        padding: var(--space-xl) var(--space-md);
+        min-height: auto;
     }
 
     .section-label-vertical {
         writing-mode: horizontal-tb;
         transform: none;
-        margin-bottom: var(--space-md);
+        margin-bottom: var(--space-sm);
+    }
+
+    .about-text {
+        font-size: clamp(1.25rem, 5vw, 1.75rem);
     }
 
     .about-details {
@@ -569,13 +704,202 @@ a:hover {
         gap: var(--space-md);
     }
 
+    /* Skills section */
+    .skills {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .skills-header {
+        flex-direction: column;
+        gap: var(--space-sm);
+        align-items: flex-start;
+    }
+
+    .skills-title {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+
+    .skills-list {
+        gap: 0.5rem;
+    }
+
+    .skill-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    /* Projects section - mobile wire design */
+    .projects {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .project {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .project-wire {
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+        gap: 0;
+    }
+
+    .wire-arm {
+        width: 8px;
+        height: 20px;
+    }
+
+    .wire-line {
+        height: 2px;
+        width: 100%;
+        flex: 1;
+        min-height: auto;
+    }
+
+    .wire-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .project-left .project-wire,
+    .project-right .project-wire {
+        align-items: center;
+    }
+
+    .project-right {
+        flex-direction: column;
+    }
+
+    .project-right .project-info {
+        text-align: left;
+    }
+
+    .project-right .project-meta,
+    .project-right .project-tags {
+        justify-content: flex-start;
+    }
+
+    .project-meta {
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+    }
+
+    .project-tags {
+        flex-wrap: wrap;
+    }
+
+    .project-title {
+        font-size: clamp(1.5rem, 8vw, 2.5rem);
+        line-height: 1.1;
+    }
+
+    .project-desc {
+        font-size: 0.9rem;
+    }
+
+    /* Process section */
+    .process {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .process-title {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+    }
+
     .process-item {
-        font-size: 1.25rem;
+        font-size: 1rem;
+        padding: var(--space-sm) 0;
+    }
+
+    /* Contact section */
+    .contact {
+        padding: var(--space-xl) var(--space-md);
+    }
+
+    .contact-title {
+        font-size: clamp(2rem, 10vw, 4rem);
+    }
+
+    .contact-email {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+        padding: var(--space-md);
     }
 
     .footer-content {
         flex-direction: column;
         text-align: center;
+        gap: var(--space-md);
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    :root {
+        --space-md: 1rem;
+        --space-lg: 2rem;
+        --space-xl: 3rem;
+    }
+
+    .hero-title {
+        font-size: clamp(1.75rem, 14vw, 3rem);
+    }
+
+    .title-accent {
+        font-size: 0.8em;
+    }
+
+    .about-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .skill-item {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .project-title {
+        font-size: clamp(1.25rem, 10vw, 2rem);
+    }
+
+    .project-tags span {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .contact-title {
+        font-size: clamp(1.75rem, 12vw, 3rem);
+    }
+
+    .process-item {
+        font-size: 0.9rem;
+    }
+}
+
+/* Ensure touch targets are large enough */
+@media (pointer: coarse) {
+
+    .skill-item,
+    .project-link,
+    .contact-email,
+    .footer-links a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 

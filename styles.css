@@ -169,11 +169,12 @@ a:hover {
 }
 
 .hero-name {
-    display: flex;
+    display: inline-flex;
     align-items: baseline;
     justify-content: center;
     gap: 1rem;
     font-size: 1.25rem;
+    text-align: center;
 }
 
 .name-label {

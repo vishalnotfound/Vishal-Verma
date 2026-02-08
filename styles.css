@@ -231,7 +231,8 @@ a:hover {
     gap: var(--space-lg);
     padding: var(--space-xl) var(--space-md);
     min-height: 80vh;
-    align-items: center;
+    align-items: start;
+    padding-top: var(--space-2xl);
 }
 
 .section-label-vertical {
@@ -243,10 +244,27 @@ a:hover {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--color-text-muted);
+    align-self: start;
+    padding-top: 0.5rem;
 }
 
 .about-content {
     max-width: 700px;
+}
+
+.about-intro {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+}
+
+.about-name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-text);
 }
 
 .about-text {

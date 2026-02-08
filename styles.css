@@ -226,26 +226,20 @@ a:hover {
    About Section
    ---------------------------------------- */
 .about {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: var(--space-lg);
+    display: block;
     padding: var(--space-xl) var(--space-md);
     min-height: 80vh;
-    align-items: start;
     padding-top: var(--space-2xl);
 }
 
-.section-label-vertical {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
+.section-label {
+    display: block;
     font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--color-text-muted);
-    align-self: start;
-    padding-top: 0.5rem;
+    margin-bottom: var(--space-sm);
 }
 
 .about-content {
@@ -703,12 +697,6 @@ a:hover {
         grid-template-columns: 1fr;
         padding: var(--space-xl) var(--space-md);
         min-height: auto;
-    }
-
-    .section-label-vertical {
-        writing-mode: horizontal-tb;
-        transform: none;
-        margin-bottom: var(--space-sm);
     }
 
     .about-text {

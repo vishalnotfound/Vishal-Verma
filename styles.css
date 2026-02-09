@@ -610,6 +610,8 @@ a:hover {
    ---------------------------------------- */
 .footer {
     padding: var(--space-md);
+    padding-left: calc(var(--space-md) + 10rem);
+    padding-right: calc(var(--space-md) + 4rem);
     border-top: 1px solid var(--color-border);
 }
 

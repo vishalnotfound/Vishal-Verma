@@ -29,7 +29,8 @@
     --color-bg-alt: #141414;
     --color-text: #f0f0f0;
     --color-text-muted: #a0a0a0;
-    --color-accent: #f0f0f0;
+    --color-accent: #a78bfa;
+    --color-accent-secondary: #c084fc;
     --color-border: #333333;
 }
 
@@ -120,8 +121,18 @@ a:hover {
     opacity: 0.6;
 }
 
+[data-theme="dark"] a:hover {
+    opacity: 1;
+    color: var(--color-accent);
+}
+
 ::selection {
     background: var(--color-text);
+    color: var(--color-bg);
+}
+
+[data-theme="dark"] ::selection {
+    background: var(--color-accent);
     color: var(--color-bg);
 }
 
@@ -407,6 +418,11 @@ a:hover {
     border-color: var(--color-text);
 }
 
+[data-theme="dark"] .skill-item:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
 /* ----------------------------------------
    Projects Section with Wire Design
    ---------------------------------------- */
@@ -668,6 +684,11 @@ a:hover {
     opacity: 1;
 }
 
+[data-theme="dark"] .contact-email:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
 /* ----------------------------------------
    Footer
    ---------------------------------------- */
@@ -686,7 +707,7 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, #8b5cf6, #d946ef, #ec4899, #8b5cf6);
+    background: linear-gradient(90deg, #8b5cf6, #a78bfa, #c084fc, #8b5cf6);
     background-size: 300% 100%;
     transform: translateX(-100%);
     transition: transform 0.5s ease;

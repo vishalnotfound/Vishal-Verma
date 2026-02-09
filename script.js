@@ -32,12 +32,6 @@ const ThemeToggle = {
 
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-
-            // Add rotation animation to toggle button
-            toggle.style.transform = 'scale(1.1) rotate(360deg)';
-            setTimeout(() => {
-                toggle.style.transform = '';
-            }, 300);
         });
 
         // Listen for system theme changes

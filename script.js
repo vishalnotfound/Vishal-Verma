@@ -4,9 +4,50 @@
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+    ThemeToggle.init();
     ScrollAnimations.init();
     SmoothScroll.init();
 });
+
+/* ----------------------------------------
+   Theme Toggle (Dark Mode)
+   ---------------------------------------- */
+const ThemeToggle = {
+    init() {
+        const toggle = document.getElementById('themeToggle');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+
+        // Set initial theme
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (prefersDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        // Toggle theme on click
+        toggle?.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            // Add rotation animation to toggle button
+            toggle.style.transform = 'scale(1.1) rotate(360deg)';
+            setTimeout(() => {
+                toggle.style.transform = '';
+            }, 300);
+        });
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+            }
+        });
+    }
+};
 
 /* ----------------------------------------
    Scroll Animations

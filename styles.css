@@ -2,6 +2,7 @@
     css animation yet to learn.
    ---------------------------------------- */
 :root {
+    /* Light Mode Colors (Default) */
     --color-bg: #e8e8e8;
     --color-bg-alt: #dedede;
     --color-text: #1a1a1a;
@@ -20,6 +21,71 @@
     --space-2xl: 12rem;
 
     --transition: 0.3s ease;
+}
+
+/* Dark Mode Colors */
+[data-theme="dark"] {
+    --color-bg: #0a0a0a;
+    --color-bg-alt: #141414;
+    --color-text: #f0f0f0;
+    --color-text-muted: #a0a0a0;
+    --color-accent: #f0f0f0;
+    --color-border: #333333;
+}
+
+/* ----------------------------------------
+   Theme Toggle Button
+   ---------------------------------------- */
+.theme-toggle {
+    position: fixed;
+    top: var(--space-md);
+    right: calc(var(--space-md) + 120px);
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    background: var(--color-bg-alt);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 101;
+    transition: all var(--transition);
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    border-color: var(--color-text);
+    background: var(--color-text);
+}
+
+.theme-toggle:hover .toggle-icon {
+    color: var(--color-bg);
+}
+
+.toggle-icon {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    transition: all var(--transition);
+}
+
+/* Sun icon for dark mode, moon for light */
+.toggle-icon::before {
+    content: '🌙';
+}
+
+[data-theme="dark"] .toggle-icon::before {
+    content: '☀️';
+}
+
+/* Smooth theme transition for all elements */
+body,
+.footer::before,
+.skill-item,
+.contact-email,
+.project-tags span {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 /* ----------------------------------------
@@ -712,6 +778,15 @@ a:hover {
     .corner-nav {
         display: none;
     }
+
+    /* Reposition theme toggle on mobile */
+    .theme-toggle {
+        top: var(--space-sm);
+        right: var(--space-sm);
+        width: 44px;
+        height: 44px;
+    }
+
 
     /* Hero adjustments */
     .hero {

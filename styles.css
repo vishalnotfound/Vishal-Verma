@@ -309,7 +309,7 @@ a:hover {
     display: flex;
     align-items: baseline;
     gap: var(--space-md);
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-sm);
 }
 
 .section-label {
@@ -332,9 +332,9 @@ a:hover {
 }
 
 .about-name {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-weight: 400;
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-weight: 700;
     color: var(--color-text);
 }
 

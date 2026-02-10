@@ -78,6 +78,83 @@
     transform: translateX(16px);
 }
 
+/* ----------------------------------------
+   Intro Animation
+   ---------------------------------------- */
+body.intro-active {
+    overflow: hidden;
+}
+
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-bg);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: all;
+}
+
+.intro-overlay.animate-out {
+    animation: overlayFade 0.5s ease 1.4s forwards;
+}
+
+.intro-text {
+    font-family: var(--font-sans);
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    white-space: nowrap;
+    will-change: transform, font-size;
+}
+
+.intro-text.animate {
+    animation: introShrink 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes introShrink {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    40% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(calc(-50vw + 6rem), calc(-50vh + 3rem)) scale(0.12);
+        opacity: 1;
+    }
+}
+
+@keyframes overlayFade {
+    0% {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    100% {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+/* Hide corner name during intro, show after */
+.intro-active .corner-tl {
+    opacity: 0;
+}
+
+.corner-tl {
+    transition: opacity 0.3s ease;
+}
+
 /* Smooth theme transition for all elements */
 body,
 .footer::before,

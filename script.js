@@ -4,11 +4,36 @@
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+    IntroAnimation.init();
     ThemeToggle.init();
     ScrollAnimations.init();
     SmoothScroll.init();
     ScrollProgress.init();
 });
+
+/* ----------------------------------------
+   Intro Animation
+   ---------------------------------------- */
+const IntroAnimation = {
+    init() {
+        const overlay = document.getElementById('introOverlay');
+        const introText = document.getElementById('introText');
+
+        if (!overlay || !introText) return;
+
+        // Small delay then start the shrink animation
+        setTimeout(() => {
+            introText.classList.add('animate');
+            overlay.classList.add('animate-out');
+        }, 300);
+
+        // After full animation completes, clean up
+        setTimeout(() => {
+            document.body.classList.remove('intro-active');
+            overlay.remove();
+        }, 2200);
+    }
+};
 
 /* ----------------------------------------
    Theme Toggle (Dark Mode)

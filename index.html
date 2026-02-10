@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=Syne:wght@600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -39,6 +39,21 @@
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <span class="toggle-icon"></span>
     </button>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress" id="scrollProgress">
+        <div class="scroll-progress-track">
+            <div class="scroll-progress-fill" id="scrollFill"></div>
+        </div>
+        <span class="scroll-progress-label" id="scrollLabel">0%</span>
+        <div class="scroll-progress-dots">
+            <div class="progress-dot active" data-section="hero" title="Home"></div>
+            <div class="progress-dot" data-section="about" title="About"></div>
+            <div class="progress-dot" data-section="skills" title="Skills"></div>
+            <div class="progress-dot" data-section="projects" title="Projects"></div>
+            <div class="progress-dot" data-section="contact" title="Contact"></div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">

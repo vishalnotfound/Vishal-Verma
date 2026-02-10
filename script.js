@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ThemeToggle.init();
     ScrollAnimations.init();
     SmoothScroll.init();
+    ScrollProgress.init();
 });
 
 /* ----------------------------------------
@@ -89,5 +90,62 @@ const SmoothScroll = {
                 }
             });
         });
+    }
+};
+
+/* ----------------------------------------
+   Scroll Progress Indicator
+   ---------------------------------------- */
+const ScrollProgress = {
+    init() {
+        const fill = document.getElementById('scrollFill');
+        const label = document.getElementById('scrollLabel');
+        const dots = document.querySelectorAll('.progress-dot');
+        const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+
+        if (!fill || !label) return;
+
+        // Click-to-scroll on dots
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const sectionId = dot.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Update on scroll
+        const update = () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0;
+            const percent = Math.round(progress * 100);
+
+            // Update fill bar and label
+            fill.style.height = percent + '%';
+            label.textContent = percent + '%';
+
+            // Update active dot based on which section is in view
+            let activeIndex = 0;
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const el = document.getElementById(sections[i]);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight * 0.4) {
+                        activeIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === activeIndex);
+            });
+        };
+
+        window.addEventListener('scroll', update, { passive: true });
+        update(); // initial call
     }
 };

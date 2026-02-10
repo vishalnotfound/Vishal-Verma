@@ -97,53 +97,69 @@ body.intro-active {
     align-items: center;
     justify-content: center;
     pointer-events: all;
+    opacity: 1;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.intro-overlay.animate-out {
-    animation: overlayFade 0.5s ease 1.4s forwards;
+.intro-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
 }
 
-.intro-text {
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.intro-content.shrink-out {
+    transform: scale(0.3) translateY(-20px);
+    opacity: 0;
+}
+
+.intro-line-wrap {
+    overflow: hidden;
+    line-height: 1;
+}
+
+.intro-line {
+    display: block;
     font-family: var(--font-sans);
-    font-size: clamp(3rem, 10vw, 7rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
+    font-size: clamp(5rem, 18vw, 12rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
     color: var(--color-text);
-    white-space: nowrap;
-    will-change: transform, font-size;
+    line-height: 0.95;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.6s ease;
 }
 
-.intro-text.animate {
-    animation: introShrink 1.4s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+.intro-line.reveal {
+    transform: translateY(0);
+    opacity: 1;
 }
 
-@keyframes introShrink {
-    0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-
-    40% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translate(calc(-50vw + 6rem), calc(-50vh + 3rem)) scale(0.12);
-        opacity: 1;
-    }
+.intro-divider {
+    width: 0;
+    height: 2px;
+    background: var(--color-text);
+    margin: 0.75rem 0;
+    transition: width 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+    opacity: 0.4;
 }
 
-@keyframes overlayFade {
-    0% {
-        opacity: 1;
-        pointer-events: all;
-    }
+.intro-divider.reveal {
+    width: clamp(100px, 30vw, 300px);
+}
 
-    100% {
-        opacity: 0;
-        pointer-events: none;
-    }
+[data-theme="dark"] .intro-divider {
+    background: var(--color-accent);
+    opacity: 0.6;
 }
 
 /* Hide corner name during intro, show after */

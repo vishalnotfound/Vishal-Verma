@@ -17,21 +17,42 @@ document.addEventListener('DOMContentLoaded', () => {
 const IntroAnimation = {
     init() {
         const overlay = document.getElementById('introOverlay');
-        const introText = document.getElementById('introText');
+        const content = document.getElementById('introContent');
+        const line1 = document.getElementById('introLine1');
+        const line2 = document.getElementById('introLine2');
+        const divider = document.getElementById('introDivider');
 
-        if (!overlay || !introText) return;
+        if (!overlay || !line1 || !line2) return;
 
-        // Small delay then start the shrink animation
+        // Step 1: Reveal VISHAL (slide up from clip mask)
         setTimeout(() => {
-            introText.classList.add('animate');
-            overlay.classList.add('animate-out');
-        }, 300);
+            line1.classList.add('reveal');
+        }, 200);
 
-        // After full animation completes, clean up
+        // Step 2: Reveal divider
+        setTimeout(() => {
+            divider.classList.add('reveal');
+        }, 400);
+
+        // Step 3: Reveal VERMA (slide up staggered)
+        setTimeout(() => {
+            line2.classList.add('reveal');
+        }, 500);
+
+        // Step 4: Hold, then shrink content and fade overlay
+        setTimeout(() => {
+            content.classList.add('shrink-out');
+        }, 2000);
+
+        setTimeout(() => {
+            overlay.classList.add('fade-out');
+        }, 2300);
+
+        // Step 5: Clean up
         setTimeout(() => {
             document.body.classList.remove('intro-active');
             overlay.remove();
-        }, 2200);
+        }, 2900);
     }
 };
 

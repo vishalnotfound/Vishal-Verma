@@ -21,6 +21,7 @@ const IntroAnimation = {
         const line1 = document.getElementById('introLine1');
         const line2 = document.getElementById('introLine2');
         const divider = document.getElementById('introDivider');
+        const cornerName = document.getElementById('cornerName');
 
         if (!overlay || !line1 || !line2) return;
 
@@ -39,20 +40,41 @@ const IntroAnimation = {
             line2.classList.add('reveal');
         }, 500);
 
-        // Step 4: Hold, then shrink content and fade overlay
+        // Step 4: Fly to corner
         setTimeout(() => {
+            // Calculate where the corner name is
+            const cornerRect = cornerName.getBoundingClientRect();
+            const contentRect = content.getBoundingClientRect();
+
+            // Target: center of corner span
+            const targetX = cornerRect.left + cornerRect.width / 2;
+            const targetY = cornerRect.top + cornerRect.height / 2;
+
+            // Current: center of intro content
+            const currentX = contentRect.left + contentRect.width / 2;
+            const currentY = contentRect.top + contentRect.height / 2;
+
+            // How much to move
+            const dx = targetX - currentX;
+            const dy = targetY - currentY;
+
+            // Scale down to match corner text size
+            const scale = 0.02;
+
+            content.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
             content.classList.add('shrink-out');
         }, 2000);
 
+        // Step 5: Fade overlay and show corner name
         setTimeout(() => {
             overlay.classList.add('fade-out');
-        }, 2300);
+        }, 2700);
 
-        // Step 5: Clean up
+        // Step 6: Clean up
         setTimeout(() => {
             document.body.classList.remove('intro-active');
             overlay.remove();
-        }, 2900);
+        }, 3300);
     }
 };
 

@@ -174,7 +174,7 @@ body.intro-active {
 /* Smooth theme transition for all elements */
 body,
 .footer::before,
-.skill-item,
+.skill-strip,
 .contact-email,
 .project-tags span {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
@@ -622,29 +622,48 @@ a:hover {
 
 .skills-list {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--space-sm);
 }
 
-.skill-item {
-    padding: 0.75rem 1.5rem;
+.skill-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
     border: 1px solid var(--color-border);
-    border-radius: 100px;
-    font-size: 0.875rem;
-    font-weight: 500;
+    border-radius: 8px;
+    font-size: clamp(1.25rem, 3vw, 2.5rem);
+    font-weight: 600;
+    font-family: var(--font-display);
+    text-transform: uppercase;
     transition: all var(--transition);
     cursor: default;
+    background: transparent;
 }
 
-.skill-item:hover {
+.skill-strip:hover {
     background: var(--color-text);
     color: var(--color-bg);
     border-color: var(--color-text);
+    padding-left: calc(var(--space-lg) + 1rem);
 }
 
-[data-theme="dark"] .skill-item:hover {
+[data-theme="dark"] .skill-strip:hover {
     background: var(--color-accent);
+    color: var(--color-bg);
     border-color: var(--color-accent);
+}
+
+.skill-arrow {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all var(--transition);
+}
+
+.skill-strip:hover .skill-arrow {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* ----------------------------------------

@@ -623,21 +623,23 @@ a:hover {
 .skills-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    width: 100%;
+    margin-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
 }
 
 .skill-strip {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-md) var(--space-lg);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    font-size: clamp(1.25rem, 3vw, 2.5rem);
-    font-weight: 600;
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: clamp(2rem, 5.5vw, 4.5rem);
+    font-weight: 800;
     font-family: var(--font-display);
     text-transform: uppercase;
-    transition: all var(--transition);
+    letter-spacing: -0.02em;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: default;
     background: transparent;
 }
@@ -645,20 +647,24 @@ a:hover {
 .skill-strip:hover {
     background: var(--color-text);
     color: var(--color-bg);
-    border-color: var(--color-text);
-    padding-left: calc(var(--space-lg) + 1rem);
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+    border-color: transparent;
 }
 
 [data-theme="dark"] .skill-strip:hover {
     background: var(--color-accent);
     color: var(--color-bg);
-    border-color: var(--color-accent);
+    border-color: transparent;
 }
 
 .skill-arrow {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 400;
+    font-family: var(--font-sans);
     opacity: 0;
-    transform: translateX(-20px);
-    transition: all var(--transition);
+    transform: translateX(-40px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .skill-strip:hover .skill-arrow {

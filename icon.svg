@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <style>
+    .bg { fill: transparent; }
+    .node-bg { fill: #E3D5C8; }
+    .fg-stroke { stroke: #1B6334; fill: none; stroke-width: 8; }
+    .fg-fill { fill: #1B6334; }
+    .text-val { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 28px; fill: #1B6334; text-anchor: middle; dominant-baseline: central; }
+    .text-ring { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 52px; fill: #1B6334; letter-spacing: 2px; }
+    @media (prefers-color-scheme: dark) {
+      .node-bg { fill: #0a0a0a; }
+      .fg-stroke { stroke: #a78bfa; }
+      .fg-fill { fill: #a78bfa; }
+      .text-val, .text-ring { fill: #a78bfa; }
+    }
+  </style>
+
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="244" class="fg-stroke" stroke-width="14" />
+
+  <!-- Inner ring -->
+  <circle cx="256" cy="256" r="148" class="fg-stroke" stroke-width="10" />
+
+  <!-- Radiating lines & dots -->
+  <line x1="256" y1="156" x2="256" y2="108" class="fg-stroke" />
+  <circle cx="256" cy="108" r="8" class="fg-fill" />
+
+  <line x1="342.6" y1="206" x2="384.2" y2="182" class="fg-stroke" />
+  <circle cx="384.2" cy="182" r="8" class="fg-fill" />
+
+  <line x1="342.6" y1="306" x2="384.2" y2="330" class="fg-stroke" />
+  <circle cx="384.2" cy="330" r="8" class="fg-fill" />
+
+  <line x1="256" y1="356" x2="256" y2="404" class="fg-stroke" />
+  <circle cx="256" cy="404" r="8" class="fg-fill" />
+
+  <line x1="169.4" y1="306" x2="127.8" y2="330" class="fg-stroke" />
+  <circle cx="127.8" cy="330" r="8" class="fg-fill" />
+
+  <line x1="169.4" y1="206" x2="127.8" y2="182" class="fg-stroke" />
+  <circle cx="127.8" cy="182" r="8" class="fg-fill" />
+
+  <!-- Hexagon edges -->
+  <polygon points="256,156 342.6,206 342.6,306 256,356 169.4,306 169.4,206" class="fg-stroke" />
+
+  <!-- Hexagon circles and text -->
+  <g>
+    <circle cx="256" cy="156" r="22" class="node-bg fg-stroke" />
+    <text x="256" y="158" class="text-val">V</text>
+
+    <circle cx="342.6" cy="206" r="22" class="node-bg fg-stroke" />
+    <text x="342.6" y="208" class="text-val">V</text>
+
+    <circle cx="342.6" cy="306" r="22" class="node-bg fg-stroke" />
+    <text x="342.6" y="308" class="text-val">V</text>
+
+    <circle cx="256" cy="356" r="22" class="node-bg fg-stroke" />
+    <text x="256" y="358" class="text-val">V</text>
+
+    <circle cx="169.4" cy="306" r="22" class="node-bg fg-stroke" />
+    <text x="169.4" y="308" class="text-val">V</text>
+
+    <circle cx="169.4" cy="206" r="22" class="node-bg fg-stroke" />
+    <text x="169.4" y="208" class="text-val">V</text>
+  </g>
+
+  <!-- Text paths -->
+  <defs>
+    <path id="top-arc" d="M 60 256 A 196 196 0 0 1 452 256" fill="none" />
+    <path id="bottom-arc" d="M 60 256 A 196 196 0 0 0 452 256" fill="none" />
+  </defs>
+
+  <text class="text-ring">
+    <textPath href="#top-arc" startOffset="50%" text-anchor="middle" dominant-baseline="central">VISHAL</textPath>
+  </text>
+  <text class="text-ring">
+    <textPath href="#bottom-arc" startOffset="50%" text-anchor="middle" dominant-baseline="central">VERMA</textPath>
+  </text>
+</svg>

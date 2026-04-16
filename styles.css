@@ -624,52 +624,30 @@ a:hover {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: var(--space-lg);
+    margin-top: var(--space-md);
     border-top: 1px solid var(--color-border);
 }
 
 .skill-strip {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: var(--space-lg) 0;
+    padding: var(--space-sm) 0;
     border-bottom: 1px solid var(--color-border);
-    font-size: clamp(2rem, 5.5vw, 4.5rem);
-    font-weight: 800;
-    font-family: var(--font-display);
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 1.15rem;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    transition: all var(--transition);
     cursor: default;
     background: transparent;
 }
 
 .skill-strip:hover {
-    background: var(--color-text);
-    color: var(--color-bg);
+    background: var(--color-bg-alt);
     padding-left: var(--space-md);
-    padding-right: var(--space-md);
-    border-color: transparent;
 }
 
 [data-theme="dark"] .skill-strip:hover {
-    background: var(--color-accent);
-    color: var(--color-bg);
-    border-color: transparent;
-}
-
-.skill-arrow {
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    font-weight: 400;
-    font-family: var(--font-sans);
-    opacity: 0;
-    transform: translateX(-40px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.skill-strip:hover .skill-arrow {
-    opacity: 1;
-    transform: translateX(0);
+    background: var(--color-border);
 }
 
 /* ----------------------------------------

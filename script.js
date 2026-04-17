@@ -169,7 +169,7 @@ const ScrollProgress = {
         const fill = document.getElementById('scrollFill');
         const label = document.getElementById('scrollLabel');
         const dots = document.querySelectorAll('.progress-dot');
-        const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
+        const sections = ['hero', 'about', 'projects', 'skills', 'contact'];
 
         if (!fill || !label) return;
 
